@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,10 @@ namespace ShopEntity.Entites
       public Category Category{ get; set; }
         
 public int? CategoryId { get; set; }
-        public ICollection<OrderProduct> OrderProducts { get; set; }
+
+
+       
+        public  virtual ICollection<OrderProduct> OrderProducts { get; set; }=new List<OrderProduct>();
 
 
 

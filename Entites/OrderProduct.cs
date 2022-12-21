@@ -9,7 +9,7 @@ namespace ShopEntity.Entites
     {
     public class OrderProduct
         {
-        /* public int OrderProductId { get; set; }*/
+      
 
 
         public Order Order { get; set; }

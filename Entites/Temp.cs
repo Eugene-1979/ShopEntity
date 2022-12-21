@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopEntity
+namespace ShopEntity.Entites
     {
-    internal class Class1
+    public class Temp
         {
+        public int TempId { get; set; }
         }
     }

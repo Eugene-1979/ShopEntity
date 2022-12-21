@@ -12,7 +12,8 @@ namespace ShopEntity.Entites
         [Key]
         public int ShopId { get; set; }
         public string Name { get; set; }
-        public ICollection<Category> Categorys { get; set; }
+        public virtual List<Category> Categorys { get; set; }=new List<Category>();
         }
  
     }
+

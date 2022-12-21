@@ -1,6 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using ShopEntity.Entites;
 using System;
 using System.Collections.Generic;
@@ -10,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace ShopEntity
     {
-    public class Db:DbContext
+    internal class DbNext:DbContext
         {
-     public  const int  temp= 20;
         DeleteBehavior behavior = DeleteBehavior.ClientNoAction;
 
-        SqlConnectionStringBuilder sqb = new() {
-        DataSource = "localhost",
-            InitialCatalog = "EntityShop",
-            IntegratedSecurity=true,
-            TrustServerCertificate=true };
-
-
-
-        public Db()
+        SqlConnectionStringBuilder sqb = new()
             {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            DataSource = "localhost",
+            InitialCatalog = "EntityShop",
+            IntegratedSecurity = true,
+            TrustServerCertificate = true
+            };
+
+
+
+        public DbNext()
+            {
+           
 
 
 
@@ -36,22 +35,23 @@ namespace ShopEntity
             {
             optionsBuilder.UseSqlServer(sqb.ConnectionString);
             }
-        
-        public  DbSet<Category> Categorys { get; set; }
+
+        public DbSet<Category> Categorys { get; set; }
         public DbSet<Temp> Temps { get; set; }
-        public  DbSet<Customer> Customers { get; set; }
-        public  DbSet<Employee> Employees { get; set; }
-        public  DbSet<Order> Orders { get; set; }
-        public  DbSet<OrderProduct> OrderProducts { get; set; }
-        public  DbSet<Product> Products { get; set; }
-        public  DbSet<Shop> Shops { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Shop> Shops { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
-         /*   Составной первичный ключ для таблицы manyToMany*/
-                modelBuilder.Entity<OrderProduct>().
-                HasKey(q => new { q.OrderId, q.ProductId });
+            /*   Составной первичный ключ для таблицы manyToMany*/
+            modelBuilder.Entity<OrderProduct>().
+            HasKey(q => new { q.OrderId, q.ProductId });
 
 
 
@@ -91,6 +91,5 @@ namespace ShopEntity
 
 
             }
-
         }
     }

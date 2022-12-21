@@ -12,13 +12,13 @@ namespace ShopEntity.Entites
 
 
        public Employee Employee { get; set; }
-        public int EmployeeId { get; set; }
+        public int ?EmployeeId { get; set; }
 
+        public DateTime MyDate { get; set; }
+        public Customer Customer{ get; set; }
+        public int ?CustomerId { get; set; }
 
-       public Customer Customer{ get; set; }
-        public int CustomerId { get; set; }
-
-        public ICollection<OrderProduct> OrderProducts { get; set; }
+        public virtual List<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
 
 
 
